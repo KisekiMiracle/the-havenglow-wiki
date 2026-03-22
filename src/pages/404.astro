@@ -1,0 +1,18 @@
+---
+import ErrorLayout from "@/layouts/ErrorLayout.astro";
+---
+
+<ErrorLayout>
+  <section class="w-screen h-screen flex flex-col gap-8 items-center justify-center p-4">
+    <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24"><path fill="currentColor" d="M20 17h2v-2h-2zm0-10v6h2V7M6 16h5v2H6m0-6h8v2H6M4 2c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8l-6-6M4 4h7v5h5v11H4Z"/></svg>
+    <div class="flex flex-col gap-1 items-center justify-center text-center">
+      <h1 class="font-extrabold text-6xl">ERROR 404</h1>
+      <span class="font-bold text-3xl">It looks like something went wrong.</span>
+    </div>
+    <p class="flex flex-col gap-0 items-center justify-center text-neutral-500 text-lg max-w-xl text-center">
+      You've ventured into uncharted digital territory. The page you seek has eluded us. Let's guide you back to familiar paths.
+    </p>
+    <a class="px-4 py-2 bg-neutral-900 text-white rounded-md font-light duration-200 transition-colors hover:bg-neutral-700" href="/">Back to Home</a>
+  </section>
+</ErrorLayout>
+

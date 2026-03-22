@@ -1,0 +1,66 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  title: string,
+  description: string,
+  type?: "Character" | "Location" | "Story Event",
+  href?: string
+}
+const { title, description, type = "Story Event", href = "/" }: Props = Astro.props;
+---
+
+<a href={href} data-card class="group flex flex-col justify-between text-white p-4 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-200 hover:cursor-pointer">
+  <div class="flex justify-end w-full text-white z-1">
+    <span class={cn("flex items-center gap-1 text-xs rounded-md px-2 py-1 text-bold transition-colors duration-200", {
+      "group-hover:bg-blue-700" : type === "Story Event",
+      "group-hover:bg-rose-500" : type === "Character",
+      "group-hover:bg-emerald-600": type === "Location"
+    })}>
+      { type === "Character" && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 9c0 1.66-1.34 3-3 3s-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3m3 11H2v-2c0-2.21 2.69-4 6-4s6 1.79 6 4m8-6v2h-9v-2m9-4v2h-9V8m9-4v2h-9V4Z"/></svg>}
+      { type === "Story Event" && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m16.5 17.25l2.86 1.69l-.75 1.22L15 18v-5h1.5zM23 17c0 3.87-3.13 7-7 7c-1.91 0-3.63-.76-4.89-2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v7.26c1.81 1.27 3 3.36 3 5.74m-2 0c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5s5-2.24 5-5"/></svg>}
+      { type === "Location" && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>}
+      {type}
+    </span>
+  </div>
+  <div class="flex flex-col gap-1 text-left">
+    <div class="z-1 font-semibold">
+      <h3 class="text-ellipsis line-clamp-1">{title}</h3>
+      <hr>
+    </div>
+    <p class="z-1 text-sm transition-all duration-200 line-clamp-3 group-hover:h-fit h-10">{description}</p>
+  </div>
+</a>
+
+<style scoped>
+  [data-card] {
+    position: relative;
+    width: 240px;
+    height: 360px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://picsum.photos/260/380');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1);
+      transition: transform 0.4s ease;
+      z-index: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    &:hover::before {
+      transform: scale(1.08);
+    }
+  }
+</style>
+

@@ -1,0 +1,17 @@
+---
+import { getEntry, render } from 'astro:content';
+import WikiLayout from '@/layouts/WikiLayout.astro';
+
+const { slug } = Astro.params;
+const post = await getEntry('wiki', slug!);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await render(post);
+---
+
+<WikiLayout {...post.data}>
+  <Content />
+</WikiLayout>

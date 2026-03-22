@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import SectionLink from '@/components/SectionLink.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+import CommentsHistory from "@/components/comments/history.vue"
+
+type Props = CollectionEntry<'wiki'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, tags, descriptor, source, sourceLink } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={`${title} | Havenglow Wiki`} description={description} />
+		<style>
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				max-width: 100% !important;
+				hr {
+					margin-top: 0 !important;
+					margin-bottom: 0 !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<main class="w-full flex flex-col gap-8 items-center py-8">
+			<article class="w-full lg:max-w-5/12">
+				<div class="hero-image w-full">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose w-full">
+					<div class="title">
+						<div class="mt-8">
+							<h1 class="mb-4">{title}</h1>
+							{ descriptor && <span class="text-sm font-semibold">{descriptor}</span> }
+							{ source && <span class="flex items-center gap-1 text-neutral-500 text-sm!">From: <SectionLink href={`/wiki/${sourceLink}`} label={source} /></span>}
+						</div>
+					</div>
+					<slot />
+				</div>
+				<!-- Statistics -->
+				<div>
+					<div class="flex items-center gap-1 text-neutral-500 text-sm font-semibold">
+						<FormattedDate date={pubDate} />
+						{
+							updatedDate && (
+								<div class="last-updated-on">
+									– Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)
+						}
+					</div>
+				</div>
+			</article>
+			<CommentsHistory postSlug=`${slug}` client:visible />
+		</main>
+	</body>
+</html>
