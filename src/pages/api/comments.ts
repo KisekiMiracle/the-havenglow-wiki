@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-import { execute, toObjects } from "@/lib/db";
 
 export const GET: APIRoute = async ({ request }) => {
   try {
@@ -13,16 +12,16 @@ export const GET: APIRoute = async ({ request }) => {
       );
     }
 
-    const data = await execute(
-      /* sql */ `
-      SELECT id, author_name, content, created_at FROM comments
-        WHERE post_slug = ? AND status = 'approved'
-        ORDER BY created_at DESC
-        LIMIT 50
-    `,
-      [slug],
-    );
-    const history = toObjects(data);
+    // const data = await execute(
+    //   /* sql */ `
+    //   SELECT id, author_name, content, created_at FROM comments
+    //     WHERE post_slug = ? AND status = 'approved'
+    //     ORDER BY created_at DESC
+    //     LIMIT 50
+    // `,
+    //   [slug],
+    // );
+    // const history = toObjects(data);
 
     return Response.json(
       {
