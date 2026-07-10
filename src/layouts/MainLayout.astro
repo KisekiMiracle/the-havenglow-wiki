@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
 import SearchModal from '@/components/search/modal.vue'
+import 'lenis/dist/lenis.css'
 
 const { title, description } = Astro.props;
 ---
@@ -20,6 +21,15 @@ const { title, description } = Astro.props;
 		</main>
 		<Footer />
 		<SearchModal client:only="vue" />
+		<script>
+			import Lenis from 'lenis';
+
+			document.addEventListener("astro:page-load", () => {
+				const lenis = new Lenis({
+					autoRaf: true,
+				});
+			})
+		</script>
 	</body>
 </html>
 

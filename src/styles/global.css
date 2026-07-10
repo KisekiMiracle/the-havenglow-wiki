@@ -53,3 +53,9 @@ body {
 .popover {
   @apply shadow-md rounded-md! border! border-neutral-100! bg-white!;
 }
+
+.prose {
+  strong {
+    @apply text-neutral-700;
+  }
+}

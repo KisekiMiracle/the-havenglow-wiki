@@ -10,4 +10,11 @@
   "observability": {
     "enabled": true,
   },
+  "d1_databases": [
+    {
+      "binding": "havenglow_wiki_db",
+      "database_name": "havenglow-wiki-db",
+      "database_id": "59282cac-42e8-4c7a-8cff-10f45dc3cd01",
+    },
+  ],
 }

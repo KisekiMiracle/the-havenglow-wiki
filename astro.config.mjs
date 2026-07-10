@@ -6,12 +6,11 @@ import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
-import cloudflare from "@astrojs/cloudflare";
 import { webcore } from "webcoreui/integration";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://wiki.kiseki-miracle.dev",
   integrations: [mdx(), sitemap(), vue(), webcore()],
 
   vite: {
@@ -24,10 +23,6 @@ export default defineConfig({
       },
     },
   },
-
-  adapter: cloudflare({
-    prerenderEnvironment: "node",
-  }),
 
   output: "server",
 });

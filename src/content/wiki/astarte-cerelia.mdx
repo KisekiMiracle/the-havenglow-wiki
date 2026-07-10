@@ -10,24 +10,49 @@ sourceLink: "project-havenglow"
 ---
 
 import SectionLink from "@/components/SectionLink.astro";
-
-**Age:** 22
-
-**Aliases:** Mad Witch, Catastrophe
-
-**Profession:** Adventurer
-
-**Affiliation:**
-
-- Smiling Company (current)
+import DescriptionTable from "@/components/wiki/description-table.astro";
+import DescriptionTableEntry from "@/components/wiki/description-table-entry.astro";
+import AbilityCard from "@/components/cards/abilities.astro";
+import AbilityEffect from "@/components/miscellaneous/ability-effect.astro";
 
 > A smart, sharp-tongued unorthodox wizardess specialized in close-quarters-combat and strategies.
+
+<div class="flex flex-col md:grid md:grid-cols-2 gap-8">
+  <div>
 
 The _**“Mad Witch”,**_ as she has been infamously known as in her home realm. Age 22. Known as a ‘spellcrafter’, she dedicates a substantial amount of her free time to studying the inner workings of magic–always trying to develop further her spells. Ended up stranded in an unknown world after a spell went wrong–or incredibly well, depending on her mood when asked about it.
 
 Her trusty _**Spellbook**_ has been stolen by Amber and her cronies–and now the young lady is searching for their whereabouts, ready to retrieve what is hers: either the nice way, or the not-so-nice one.
 
 ## Introduction
+
+  </div>
+  <DescriptionTable>
+    <DescriptionTableEntry label="Real Name">[ REDACTED ]</DescriptionTableEntry>
+    <DescriptionTableEntry label="Age">22</DescriptionTableEntry>
+    <DescriptionTableEntry label="Weapon">Ancient Artifact Arcadia</DescriptionTableEntry>
+    <DescriptionTableEntry label="Aliases">The Mad Witch</DescriptionTableEntry>
+    <DescriptionTableEntry label="Title">Spellcrafter</DescriptionTableEntry>
+    <DescriptionTableEntry label="Occupation">
+      <span>Adventurer</span>
+    </DescriptionTableEntry>
+    <DescriptionTableEntry label="Affiliation">
+      <span>Smiling Company <strong>(current)</strong></span>
+    </DescriptionTableEntry>
+    <DescriptionTableEntry label="Height">Around 161cm.</DescriptionTableEntry>
+    <DescriptionTableEntry label="Weight">Unrecorded</DescriptionTableEntry>
+    <DescriptionTableEntry label="Likes">
+      <span>Pudding</span>
+      <span>Taking baths</span>
+      <span>Perfumes</span>
+      <span>Hats</span>
+    </DescriptionTableEntry>
+    <DescriptionTableEntry label="Dislikes" hasNextElement={false}>
+      <span>Bitter food</span>
+      <span>Very hot water</span>
+    </DescriptionTableEntry>
+  </DescriptionTable>
+</div>
 
 ## Background
 
@@ -43,15 +68,79 @@ A curiously big hat, pretty common during the <SectionLink href="/" label="Golde
 
 ## Abilities
 
-### ◈ Manaflow Overdrive
-
-Astarte's condition makes her mana overload and leak out of her body, which then gets channelled into her staff to empower her abilities. At the end of her turn, part of the excess mana is expelled around her, granting her and her allies' **+10% Damage Reduction** passively as long as she is in combat.
+<div class="flex flex-col gap-6">
+  <AbilityCard
+    title="Manaload Overflow"
+    target="Area of Effect"
+    damageType="Magical"
+    piercesImmunity="No"
+    quote="Astarte's condition comes with a peculiarly useful side-effect in combat."
+    cooldown={2}
+  >
+    <svg
+      slot="icon"
+      xmlns="<http://www.w3.org/2000/svg>"
+      width="94"
+      height="94"
+      viewBox="0 0 512 512"
+    >
+      <path
+        fill="currentColor"
+        d="M277.15 15.205C156.242 16.415 55.302 138.49 97.855 259.738c.236-.898.495-1.78.74-2.672c2.014-44.925 29.754-87.052 72.382-111.033C240.472 96.4 349.52 103.243 482.07 207.91C441.497 139.717 395.89 98.6 331.764 64.86c25.326 1.366 52.64 1.44 83.797 6.826c-44.575-40.27-92.906-56.936-138.41-56.48zM125.822 52.412c-137.746 41.46-140.07 297.526-7.592 355.668c-26.982-5.33-52.944-14.213-75.92-26.867c70.023 139.78 335.9 106.928 329.42-81.266c-17.214 37.204-52.435 67.6-97.572 79.705c-35.122 9.42-70.577 6.236-100.363-6.76c-98.026-39.283-154.31-188.008-47.97-320.48zm123.96 91.914c-12.187-.084-24.737 1.472-37.323 4.848c-67.128 18.003-107.523 80.338-91.952 138.502c7.036 26.283 24.393 47.58 47.498 61.373c17.175 6.946 35.95 9.88 54.303 8.15c50.952-4.81 95.722-48.554 90.434-100.952c-3.738-37.02-35.686-69.512-73.648-65.363c-26.23 2.867-49.247 25.63-46.123 52.295c2.097 17.902 17.716 33.58 35.705 31.297h.002c11.602-1.472 21.745-11.662 20.197-23.002a14.6 14.6 0 0 0-1.21-4.096a15.97 15.97 0 0 1-8.044 5.077c-8.567 2.296-17.376-2.79-19.672-11.357c-2.294-8.568 2.79-17.373 11.36-19.668c.49-.132.984-.235 1.477-.32l-.002-.01l.13-.016h.005c17.875-2.566 32.265 11.716 34.47 27.86h-.003c3.123 22.877-15.39 41.404-36.358 44.064c-29.462 3.737-53.413-20.335-56.614-47.656c-4.464-38.11 26.966-69.14 62.65-73.042a80 80 0 0 1 9.14-.478c45.104.222 80.722 38.92 85.126 82.54c4.628 45.855-21.593 85.602-59.184 106.435c65.427-18.976 104.47-80.37 89.12-137.714c-12.652-47.26-58.668-78.407-111.485-78.77zm79.74 5.326c23.968 16.104 42.048 39.66 49.798 68.612c.908 3.39 1.65 6.79 2.243 10.187c26.737 85.357-5.167 199.845-63.8 261.392C379.27 473.715 425.278 417.11 441.6 353.756c12.557 44.178 15.743 89.788 7.02 128.187c93.862-152.582 29.32-296.865-119.097-332.29z"
+      />
+    </svg>
+    <div slot="description">
+      Astarte's condition makes her mana overload and leak out of her body,
+      which then gets channelled into her staff to empower her abilities. At the
+      end of her turn, part of the excess mana is expelled around her, granting
+      her and her allies **Damage Reduction** passively as long as she is in
+      combat.
+    </div>
+    <div
+      slot="effects"
+      class="flex flex-col md:grid md:grid-cols-2 w-full mt-4 mb-2"
+    >
+      <AbilityEffect effect="Damage Reduction" resolution="10%" />
+    </div>
+  </AbilityCard>
+  <AbilityCard
+    title="Arcane Driver"
+    target="Self"
+    damageType="Magical"
+    quote="The Ancient Artifact Arcadia is known as the best catalizer a magician can ask for—and now is being used in an interesting way."
+  >
+    <svg
+      slot="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="94"
+      height="94"
+      viewBox="0 0 512 512"
+    >
+      <path
+        fill="currentColor"
+        d="M284.12 20.73c30.422 18.874 55.654 45.028 75.34 74.752c-73.148-65.998-206.043-81.91-299.02-8.173c44.155-19.618 91.96-19.767 138.013-8.804C114.99 82.516 33.898 136.31 18.56 229.29c28.362-45.715 72.144-79.85 120.89-99.282C47.783 181.433-.934 307.458 68.2 403.91c-11.83-50.502-5.58-103.153 13.435-150.09c-18.02 100.152 41.172 205.05 144.836 238.28c-98.068-80.374-125.746-175.25-112.058-249.614c5.654-71.675 65.768-128.25 138.873-128.25c76.828 0 139.31 62.483 139.31 139.31c0 76.83-62.482 139.31-139.31 139.31c-33.366 0-64.022-11.79-88.033-31.417c11.26 17.618 24.974 31.902 40.346 43.035C248.6 446.93 327.288 484.91 389.92 472.61c-25.058-9.186-46.515-19.935-62.965-34.66c51.524 2.73 109.75-8.742 145.904-40.294c-20.596 3.584-39.757 5.23-57.48 3.602c38.675-26.044 68.16-66.24 76.653-117.72c-28.363 45.713-72.145 79.848-120.892 99.28c91.67-51.423 140.387-177.448 71.25-273.902c11.83 50.502 5.583 103.155-13.433 150.092C454.1 158.858 399.182 39.712 284.12 20.728zm-30.835 112.196c-1.9 0-3.79.048-5.67.135l-1.404 18.954a101 101 0 0 0-22.452 4.336l-8.38-17.364a120 120 0 0 0-27.01 12.825l8.47 17.547a101 101 0 0 0-17.463 15.026l-16.24-11.053a120.6 120.6 0 0 0-16.96 24.62l16.376 11.146a102.4 102.4 0 0 0-7.67 21.924l-19.837-1.47a121.6 121.6 0 0 0-2.238 29.813l19.818 1.47c.552 7.587 1.97 15.19 4.297 22.67l-17.963 8.67a120 120 0 0 0 13.002 26.923l17.907-8.643a101 101 0 0 0 14.918 17.438l-11.117 16.34a120.7 120.7 0 0 0 24.732 16.8l11.043-16.227c6.985 3.405 14.342 6 21.914 7.74l-1.435 19.365a121.7 121.7 0 0 0 29.826 2.086l1.416-19.105c7.737-.54 15.49-1.976 23.117-4.36l8.265 17.122a120 120 0 0 0 26.85-13.15l-8.18-16.953a101 101 0 0 0 17.695-15.243l15.395 10.474a120.5 120.5 0 0 0 16.687-24.805l-15.31-10.418a102.3 102.3 0 0 0 7.607-21.86l18.327 1.358a121.6 121.6 0 0 0 2.287-23.508q0-3.177-.162-6.315l-18.236-1.35a101 101 0 0 0-4.404-22.902L367.638 215a120 120 0 0 0-12.983-26.932l-16.595 8.01a101 101 0 0 0-15.353-17.713l10.414-15.302a120.6 120.6 0 0 0-24.69-16.86l-10.53 15.47a102.3 102.3 0 0 0-21.867-7.537l1.393-18.8a121.6 121.6 0 0 0-24.14-2.407zm.746 41.803c16.696.232 32.51 5.838 45.427 15.413l-33.58 28.947a34.7 34.7 0 0 0-8.857-1.846c-8.768-.65-17.783 2.02-24.91 8.164c-9.576 8.255-13.438 20.8-11.223 32.467l-37.08 31.97a78.3 78.3 0 0 1-7.825-22.24c-8.07-42.458 19.803-83.42 62.26-91.492a78.5 78.5 0 0 1 15.79-1.384zm68.734 43.084a78.3 78.3 0 0 1 6.968 20.56c8.072 42.456-19.802 83.418-62.26 91.49c-21.682 4.12-42.962-1.148-59.683-12.93l37.733-32.532c10.626 2.85 22.457.597 31.35-7.07s12.865-19.036 11.61-29.965l34.28-29.553zm-68.606 17.915q.746-.019 1.488.036c3.96.293 7.806 2.123 10.653 5.425c5.693 6.606 4.974 16.294-1.63 21.988c-6.605 5.693-16.292 4.974-21.986-1.63c-5.694-6.606-4.976-16.292 1.63-21.986c2.888-2.49 6.367-3.753 9.844-3.833z"
+      />
+    </svg>
+    <div slot="description">
+      Astarte's excess mana is stored inside her staff's core, enhancing the
+      power of her attacks. Gains **MAX. MP** on Normal Attack, stacking up to 5
+      instances. Offensive strikes deal **additional magical damage** based on
+      her current MP.
+    </div>
+    <div
+      slot="effects"
+      class="flex flex-col md:grid md:grid-cols-2 w-full mt-4 mb-2"
+    >
+      <AbilityEffect effect="Maximun MP Gain" resolution="4 MAX. MP" />
+      <AbilityEffect effect="Maximun Stacks" resolution="5" />
+      <AbilityEffect effect="Damage" resolution="20% MAX. MP" />
+    </div>
+  </AbilityCard>
+</div>
 
 ### ◈ Arcane Driver
 
-Astarte's excess mana is stored inside her staff's core, enhancing the power of her attacks. Gains **4 MAX. HP** on Normal Attack, stacking up to 5 instances. Offensive strikes deal additional magical damage based on her current MP.
-
-### ◉ Runic Wand
+### Runic Wand
 
 Strikes the enemy with a wand smack. Deals **100% Damage** on hit.
 

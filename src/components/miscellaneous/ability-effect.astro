@@ -1,0 +1,17 @@
+---
+interface Props {
+  effect: string;
+  resolution: number | string;
+}
+
+const { effect, resolution }: Props = Astro.props;
+---
+
+<p class="flex items-center gap-1">
+  <span class="font-bold">
+    {effect}:
+  </span>
+  <span>
+    {resolution}
+  </span>
+</p>
