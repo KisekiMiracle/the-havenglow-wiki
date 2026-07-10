@@ -9,6 +9,7 @@ services:
       - "4321:4321"
     environment:
       NODE_ENV: production
+      HOST: 0.0.0.0
       PORT: 4321
       # Database
       DATABASE_URL: ${DATABASE_URL}
