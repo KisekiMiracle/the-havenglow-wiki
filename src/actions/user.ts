@@ -1,10 +1,10 @@
 import { defineAction, ActionError } from "astro:actions";
 import { z } from "astro/zod";
-import { drizzle } from "drizzle-orm/d1";
 import { eq } from "drizzle-orm";
 import { users } from "@/db/schema";
 import { Resend } from "resend";
 import { SignJWT } from "jose";
+import { db } from "@/lib/db";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
@@ -15,15 +15,12 @@ export const user = {
       email: z.string().email({ message: "Invalid email." }),
     }),
     handler: async (input) => {
-      const db = drizzle(env.havenglow_wiki_db);
-
       try {
         // SELECT — .get() returns first row or undefined
-        const user = await db
+        const [user] = await db
           .select({ username: users.username, email: users.email })
           .from(users)
-          .where(eq(users.email, input.email))
-          .get();
+          .where(eq(users.email, input.email));
 
         if (!user) return { error: "Could not find that user." };
 
@@ -34,7 +31,7 @@ export const user = {
           .setIssuedAt()
           .sign(SECRET);
 
-        const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+        const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
 
         // UPDATE
         await db
