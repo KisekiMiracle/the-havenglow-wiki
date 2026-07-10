@@ -43,7 +43,7 @@ export const user = {
           })
           .where(eq(users.email, input.email));
 
-        const baseUrl = import.meta.env.PROD
+        const baseUrl = import.meta.env.NODE_ENV
           ? import.meta.env.SITE_URL
           : "http://localhost:4321";
 

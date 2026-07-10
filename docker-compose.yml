@@ -1,0 +1,21 @@
+services:
+  havenglow-wiki:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: havenglow-wiki
+    restart: unless-stopped
+    ports:
+      - "4321:4321"
+    environment:
+      NODE_ENV: production
+      PORT: 4321
+      # Database
+      DATABASE_URL: ${DATABASE_URL}
+      # Auth
+      JWT_SECRET: ${JWT_SECRET}
+      # Resend
+      RESEND_API_KEY: ${RESEND_API_KEY}
+      RESEND_TO_EMAIL: ${RESEND_TO_EMAIL}
+      # Site
+      SITE_URL: ${SITE_URL}
